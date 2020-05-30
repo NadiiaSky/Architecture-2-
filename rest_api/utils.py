@@ -1,9 +1,9 @@
-from model.models import DateTime, Date
+from rest_api.models import DateModel, DateTimeModel
 from rest_api.views import DateView, DateTimeView
 
 OBJECTS_MAP = {
-    'date': (Date, DateView),
-    'datetime': (DateTime, DateTimeView),
+    'date': (DateModel, DateView),
+    'datetime': (DateTimeModel, DateTimeView),
 }
 
 

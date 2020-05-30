@@ -4,7 +4,10 @@ class DateTimeController:
         self.view = view
 
     def create_object(self, data):
-        return self.model(**data)
+        self.model.validate(data)
+        obj = self.model(**data)
+        obj.save()
+        return obj
 
     def make_response(self, obj):
         return self.view.generate_response(obj)
