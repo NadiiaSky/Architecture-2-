@@ -9,7 +9,7 @@ from view.views import DateView, DateTimeView
 
 
 class TestModel(unittest.TestCase):
-    @mock.patch('view.DateTimeView.DateView.enter_data', lambda _: (2020, 12, 31))
+    @mock.patch('view.views.DateView.enter_data', lambda _: (2020, 12, 31))
     def test__date_object_creation(self):
         view = DateView()
         model = Date(*view.enter_data())
@@ -27,7 +27,7 @@ class TestModel(unittest.TestCase):
         with self.assertRaises(ValueError):
             Date(2020, 12, 32)
 
-    @mock.patch('view.DateTimeView.DateTimeView.enter_data', lambda _: (2020, 12, 31, 23, 59))
+    @mock.patch('view.views.DateTimeView.enter_data', lambda _: (2020, 12, 31, 23, 59))
     def test__datetime_object_creation(self):
         view = DateTimeView()
         model = DateTime(*view.enter_data())
@@ -48,15 +48,15 @@ class ControllerTest(unittest.TestCase):
         controller2 = DateTimeController()
         assert controller1 is controller2
 
-    @mock.patch("controller.DateTimeController.print", mock.MagicMock(return_value=None))
+    @mock.patch("controller.controller.print", mock.MagicMock(return_value=None))
     def test__process_time(self):
         controller = DateTimeController()
         controller.data = DateTime(2020, 12, 31, 15, 45)
         assert controller.process_time() == "3:45pm"
 
     def test__run_exit_success(self):
-        my_input = patch("controller.DateTimeController.input", mock.MagicMock(return_value="0"))
-        my_print = patch("view.DateTimeView.View.show_menu", mock.MagicMock(return_value=None))
+        my_input = patch("controller.controller.input", mock.MagicMock(return_value="0"))
+        my_print = patch("view.views.View.show_menu", mock.MagicMock(return_value=None))
         my_input.start()
         my_print.start()
         controller = DateTimeController()
@@ -64,7 +64,7 @@ class ControllerTest(unittest.TestCase):
         my_input.stop()
         my_print.stop()
 
-    @mock.patch("controller.DateTimeController.input", mock.MagicMock(return_value="MY_SUPER_SECRET"))
+    @mock.patch("controller.controller.input", mock.MagicMock(return_value="MY_SUPER_SECRET"))
     def test__factory_data(self):
         controller = DateTimeController()
         controller.factory_data('date')
