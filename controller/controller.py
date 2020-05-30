@@ -1,5 +1,5 @@
-from model.DateTime import Date, DateTime
-from view.DateTimeView import DateView, View, DateTimeView
+from model.models import Date, DateTime
+from view.views import DateView, View, DateTimeView
 
 
 class Protector:  # proxy pattern

@@ -3,9 +3,9 @@ from unittest.mock import patch
 
 import mock
 
-from controller.DateTimeController import DateTimeController
-from model.DateTime import Date, DateTime
-from view.DateTimeView import DateView, DateTimeView
+from controller.controller import DateTimeController
+from model.models import Date, DateTime
+from view.views import DateView, DateTimeView
 
 
 class TestModel(unittest.TestCase):

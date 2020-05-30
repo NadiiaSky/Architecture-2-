@@ -1,4 +1,4 @@
-from controller.DateTimeController import DateTimeController
+from controller.controller import DateTimeController
 
 
 def main():
